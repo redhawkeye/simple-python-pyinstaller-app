@@ -17,7 +17,7 @@ node {
         input(message: "Lanjutkan ke tahap Deploy?")
     }
 
-    docker.image('cdrx/pyinstaller-linux:python2').inside {
+    docker.image('cdrx/pyinstaller-linux:python2').inside("""-u root --entrypoint=''""") {
         stage('Deploy') {
             sh '/root/.pyenv/shims/pyinstaller --onefile sources/add2vals.py'
             sh 'sleep 60'
